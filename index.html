@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task</title>
+</head>
+<body>
+<h1>CallBack Function</h1>
+<script>
+
+<!---------------- CallBack ------------>
+
+<!------------------ 1 ----------------->
+
+function first(val){
+ if(val=="pizza"){
+  console.log("your order confirmed");
+  func2(first)
+  }
+  else{
+  console.log("sorry this dish is not available");
+  }
+  }
+let a=prompt("Enter your dish name");
+first(a)  
+
+function func2(del){
+setTimeout(()=>{
+ console.log("Your Order is on the way");
+ },2000)
+}
+
+
+
+<!------------------ 2 ----------------->
+let ans,ans2,ans3;
+function operation(num1,num2,callback){
+	let c=num1/num2;
+	callback(c);
+	}
+	operation(60,2,divide=>{
+		ans=divide;
+		console.log("Result of the first callback:"+ans);
+	})
+	operation(ans,3,divide=>{
+		ans2=divide;
+		console.log("Result of the second callback:"+ans2);
+	})
+	operation(ans2,5,divide=>{
+		ans3=divide;
+		console.log("Result of the third callback:"+ans3);
+	})
+	
+	
+<!---------------- 3 ----------------->
+let res1,res2,res3;
+function operation2(n1,n2,callback2){
+	let k=n1+n2;
+	callback2(k);
+	}
+	operation2(10,5,sum=>{
+		res1=sum;
+		console.log("Result of the first callback:"+res1);
+	})
+	operation2(res1,10,sum=>{
+		res2=sum;
+		console.log("Result of the second callback:"+res2);
+	})
+	operation2(res2,2,sum=>{
+		res3=sum;
+		console.log("Result of the third callback:"+res3);
+	})
+
+
+
+
+<!-- ---------------promise-------------------->
+
+<!-------------------- 2 ---------------------->
+let coin=prompt("Enter your choice");
+let ans5=new Promise((resolve,reject)=>{
+if(coin=="head"){
+resolve("Success");
+}
+else{
+reject("Fail");
+}
+})
+ans5.then((msg)=>{
+console.log(msg);
+}).catch((err)=>{
+console.log(err);
+})
+
+
+<!------------------ 1 ------------------------->
+
+let food=prompt("Your order please");
+let result=new Promise((resolve,reject)=>{
+if(food=="pizza"){
+setTimeout(()=>{
+resolve("Your order is taken and it is on the way");
+},3000);
+}
+else{
+setTimeout(()=>{
+reject("Your order cancelled")},1000);
+}
+})
+result.then((msg)=>{
+console.log(msg);
+}).catch((err)=>{
+console.log(err);
+})
+
+</script>
+</body>
+</html>
